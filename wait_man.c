@@ -1,3 +1,7 @@
+/*
+Program for waitpid()
+Parent waiting for child to terminate
+*/
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -19,6 +23,8 @@ int main(int argc, char *argv[])
                if (argc == 1)
                    pause();                    /* Wait for signals */
               printf("%d\n",atoi(argv[1])) ;
+              // Send a signal to a process to itself
+              kill(getpid(),SIGINT);
                _exit(atoi(argv[1]));
 
            } else {                    /* Code executed by parent */
